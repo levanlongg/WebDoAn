@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebDoAn.Models.ThanhVien>
+
+@{
+    ViewBag.Title = "DSThanhVien";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2> Danh sách thành viên</h2>
+
+@using (Html.BeginForm("KQTimKiem_TV_Admin", "TimKiem"))
+{
+    <p>
+        <input type="text" name="tkHT" placeholder="Nhập từ khóa" style="width:300px; outline:none !important" />
+        <input type="submit" value="Tìm kiếm" style="outline:none !important;margin-left:-8%" />
+    </p>
+}
+
+<table>
+    <tr>
+        <th>
+            Tên tài khoản
+        </th>
+        <th>
+           Mật khẩu
+        </th>
+        <th>
+           Họ tên
+        </th>
+       
+        <th>
+           Email
+        </th>
+        <th>
+           Số điện thoại
+        </th>
+        <th>
+           Tên loại TV
+        </th>
+        <th>Tác vụ</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiKhoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatKhau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoai)
+        </td>
+        <td>
+            <a href="@Url.Action("XemDDH","QLDonDatHang",new {id=item.MaThanhVien})"><input type="button" value="Xem" class="btn btn-success" /> </a>
+            @*<a href="@Url.Action("SuaKH","QLKhachHang",new {id=item.MaKH})"><input type="button" value="Sửa" class="btn btn-success" /> </a>*@
+            <a href="@Url.Action("XoaDDH","QLDonDatHang",new {id=item.MaThanhVien})"><input type="button" value="Xóa" class="btn btn-success" /> </a>
+        </td>
+    </tr>
+}
+
+</table>

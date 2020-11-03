@@ -1,0 +1,59 @@
+﻿@using WebDoAn.Models;
+@model List<ItemGioHang>
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/GioHangLayout.cshtml";
+}
+@{
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>MaSP</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+                <th>Tác vụ</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                   @foreach (var item in Model)
+                    {
+                        using (Html.BeginForm("XemGioHang", "GioHang"))
+                        {
+                            <tr>
+                                <td>@item.MaSP</td>
+                                <td>@item.TenSP</td>
+                                <td><img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" width="50" height="50" /></td>
+                                <td>@item.SoLuong</td>
+                                <td>@string.Format("{0:0,0 VNĐ}", item.DonGia)</td>
+                                <td>@string.Format("{0:0,0 VNĐ}", item.ThanhTien)</td>
+                                <th>
+                                    <input onclick="Xoa('@item.MaSP')" type="button" value="Xóa" />
+                                </th>
+                            </tr>
+                        }
+                    }
+                
+        </tbody>
+    </table>
+}
+
+<script>
+    function Xoa(MaSP) {
+        //L?y s? lu?ng trong textbox
+        $.ajax({
+            url: '@Url.Action("XoaGioHang", "GioHang")',
+            type: 'Get',
+            datatype: 'JSon',
+            data: { MaSP: MaSP },
+            success: function (data) {
+                $("table table-bordered" + MaSP).remove();
+                alert('Xóa Thành Công');
+            }
+        });
+    }
+</script>

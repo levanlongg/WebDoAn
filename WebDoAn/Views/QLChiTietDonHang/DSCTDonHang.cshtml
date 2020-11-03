@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebDoAn.Models.ChiTietDonDatHang>
+
+@{
+    ViewBag.Title = "DSDonDatHang";
+    Layout = "~/Views/Layout/AdminLayoutNVBH.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<table>
+    <tr>
+        <th>
+            Mã DDH
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Đơn giá
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>Tác vụ</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @item.DonGia VNĐ
+        </td>
+        <td><img src="@Url.Content("~/Content/HinhAnhSP/" + item.SanPham.HinhAnh)" style="height: 50px;width: 50px;" /></td>
+        <td>
+            <a href="@Url.Action("XemCTDH","QLChiTietDonHang",new {id=item.MaChiTietDDH})"><input type="button" value="Xem" class="btn btn-success" /> </a>
+            <a href="@Url.Action("XoaCTDDH","QLChiTietDonHang",new {id=item.MaChiTietDDH})"><input type="button" value="Xóa" class="btn btn-success" /> </a>
+        </td>
+    </tr>
+}
+
+</table>

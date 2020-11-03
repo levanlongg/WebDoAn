@@ -1,0 +1,77 @@
+﻿@using WebDoAn.Models;
+@model IEnumerable<WebDoAn.Models.NhaCungCap>
+@{
+    ViewBag.Title = "QuanLyNhaCungCap";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+<p>
+    @Html.ActionLink("Thêm mới", "ThemMoi", "QLLoaiSanPham", new { @class = "btn btn-success" })
+</p>
+@using (Html.BeginForm("KQTimKiem_NCC_Admin", "TimKiem"))
+{
+    <p>
+        <input type="text" name="tkTenncc" placeholder="Nhập từ khóa" style="width:300px; outline:none !important" />
+        <input type="submit" value="Tìm kiếm" style="outline:none !important;margin-left:-8%" />
+    </p>
+}
+<hr />
+<table>
+    <tr>
+        <th>
+            Mã NCC
+        </th>
+        <th>
+            Tên NCC
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Số fax
+        </th>
+        <th>Tác vụ</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fax)
+            </td>
+            <td>
+                <a href="@Url.Action("XemNCC","QLNhaCungCap",new {id=item.MaNCC})"><input type="button" value="Xem" class="btn btn-success" /> </a>
+                <a href="@Url.Action("SuaNCC","QLNhaCungCap",new {id=item.MaNCC})"><input type="button" value="Sửa" class="btn btn-success" /> </a>
+                <a href="@Url.Action("XoaNCC","QLNhaCungCap",new {id=item.MaNCC})"><input type="button" value="Xóa" class="btn btn-success" /> </a>
+            </td>
+        </tr>
+    }
+</table>
+<br /><br />
+
+
+
+
+
+
+

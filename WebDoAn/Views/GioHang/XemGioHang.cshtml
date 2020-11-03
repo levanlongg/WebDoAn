@@ -1,0 +1,71 @@
+﻿@using WebDoAn.Models;
+@model  IEnumerable<WebDoAn.Models.KhachHang>
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+<h2 style="text-align:center;color:red;margin-top:-5%"><b>Giỏ hàng</b></h2>
+<hr />
+<h3 style="text-align:center;color:darkgreen"><b>Đặt hàng thành công !</b></h3>
+<hr />
+
+<h2 style="text-align:center;color:red"><b>Thông tin khách hàng</b></h2>
+@using (Html.BeginForm("DatHang", "GioHang"))
+{
+    <div class="row">
+        <label class="col-sm-1" style="text-align:right"><b>Họ tên:</b></label>
+        <div class="col-sm-5">
+            <input class="form-control" type="text" name="TenKH" placeholder="Tên người nhận">
+        </div>
+        <label class="col-sm-1" style="text-align:right"><b>Địa chỉ:</b></label>
+        <div class="col-sm-5">
+            <input class="form-control" type="text" name="DiaChi" placeholder="Địa chỉ nhận hàng">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <label class="col-sm-1" style="text-align:right"><b>Email:</b></label>
+        <div class="col-sm-5">
+            <input class="form-control" type="email" name="Email" placeholder="Email người nhận">
+        </div>
+        <label class="col-sm-1" style="text-align:right"><b>Số điện thoại:</b></label>
+        <div class="col-sm-5">
+            <input class="form-control" type="number" name="SoDienThoai" placeholder="Số điện thoại người nhận" style="height:100%">
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div style="text-align:right">
+        <input type="submit" class="btn btn-danger" value="Đặt hàng" @*style="height:38px; width:10%"*@ />
+        <a href="@Url.Action( "HomeDSSP", "Home")"><input type="button" value="MUA TIẾP" style="height:47px" class="btn btn-success" /> </a>
+    </div>
+}
+<script>
+    //Xóa thông tin san phẩm
+    function Xoa(MaSP) {
+        $.ajax({
+            url: '@Url.Action("XoaGioHang", "GioHang")',
+            type: 'Get',
+            datatype: 'JSon',
+            data: { MaSP: MaSP },
+            success: function (data) {
+                $('#tr_' + MaSP).remove();
+                alert('Xóa Thành Công');
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

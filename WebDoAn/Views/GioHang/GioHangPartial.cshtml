@@ -1,0 +1,21 @@
+﻿@using WebDoAn.Models;
+@model List<ItemGioHang>
+<div class="shopping-item" style="margin-top:0%;margin-right:5%!important;">
+    <a href="@Url.Action("XemGioHang","Home")">Cart-(<span class="cart-amunt">@ViewBag.TongTien VNĐ</span><span class="product-count">@ViewBag.TongSoLuong</span>)</a>
+    @*@{
+        if (Session["GioHang"] == null)
+        {
+            Session["GioHang"] = new List<ItemGioHang>();
+        }
+        List<ItemGioHang> ds = Session["GioHang"] as List<ItemGioHang>;
+        int SL = 0;
+        decimal? ST = 0;
+        for (int i = 0; i < ds.Count; i++)
+        {
+            SL = SL + ds[i].SoLuong;
+            ST = ST + ds[i].SoLuong * ds[i].DonGia;
+        }
+        <a href="@Url.Action("XemGioHang","Home")">Cart-(<span class="cart-amunt">@ST VNĐ</span><span class="product-count">@SL</span>)</a>
+    }*@
+</div>
+

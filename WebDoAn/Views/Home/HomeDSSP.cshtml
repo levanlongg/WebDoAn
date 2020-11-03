@@ -1,0 +1,39 @@
+﻿@using WebDoAn.Models;
+@model IEnumerable<WebDoAn.Models.SanPham>
+@{
+    ViewBag.Title = "DSSPham";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+@{
+    IEnumerable<SanPham> listCCMN = (IEnumerable<SanPham>)ViewBag.ListCCMN;
+    IEnumerable<SanPham> listSD = (IEnumerable<SanPham>)ViewBag.ListSD;
+    IEnumerable<SanPham> listTC = (IEnumerable<SanPham>)ViewBag.ListTC;
+}
+
+<!--Cây cảnh mini-->
+<section class="portfolio py-5" id="gallery" style="margin-top:-15%">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="w3ls-title text-center font-weight-bold mb-5"><span class="font-weight-light">Cây cảnh Mini</span></h3>
+        <div class="row pt-4">
+            @Html.Partial("~/Views/SanPham/DSSPham.cshtml", listCCMN)
+        </div>
+    </div>
+</section>
+<!--Sen đá-->
+<section class="portfolio py-5" id="gallery" style="margin-top:-15%">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="w3ls-title text-center font-weight-bold mb-5"><span class="font-weight-light">Sen đá</span></h3>
+        <div class="row pt-4">
+            @Html.Partial("~/Views/SanPham/DSSPham.cshtml", listSD)
+        </div>
+    </div>
+</section>
+<!--Tiểu cảnh-->
+<section class="portfolio py-5" id="gallery" style="margin-top:-15%">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="w3ls-title text-center font-weight-bold mb-5"><span class="font-weight-light">Cây cảnh văn phòng</span></h3>
+        <div class="row pt-4">
+            @Html.Partial("~/Views/SanPham/DSSPham.cshtml", listTC)
+        </div>
+    </div>
+</section>

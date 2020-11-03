@@ -1,0 +1,112 @@
+﻿@model IEnumerable<WebDoAn.Models.LoaiSanPham>
+
+@{
+    ViewBag.Title = "DSLoaiSanPham";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+
+<h1 style="margin-top:3%">Quản lý loại sản phẩm</h1>
+
+<p>
+    @Html.ActionLink("Thêm mới", "ThemMoi", "QLLoaiSanPham", new { @class = "btn btn-success" })
+</p>
+@using (Html.BeginForm("KQTimKiem_LSP_Admin", "TimKiem"))
+{
+    <p>
+        <input type="text" name="tkTenlsp" placeholder="Nhập từ khóa" style="width:300px; outline:none !important" />
+        <input type="submit" value="Tìm kiếm" style="outline:none !important;margin-left:-8%" />
+    </p>
+}
+<table>
+    <tr>
+        <th>
+            Mã LSP
+        </th>
+        <th>
+            Tên loại sản phẩm
+        </th>
+        <th>
+            Icon
+        </th>
+        <th>
+            Bí danh
+        </th>
+        <th>
+            Tác vụ
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLoaiSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BiDanh)
+            </td>
+            <td>
+                <a href="@Url.Action("XemLSP","QLLoaiSanPham",new {id=item.MaLoaiSP})"><input type="button" value="Xem" class="btn btn-success" /> </a>
+                <a href="@Url.Action("SuaLSP","QLLoaiSanPham",new {id=item.MaLoaiSP})"><input type="button" value="Sửa" class="btn btn-success" /> </a>
+                @*<a class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="Xoa1(@item.MaLoaiSP)">Xóa</a>*@
+                <a href="@Url.Action("XoaLSP","QLLoaiSanPham",new {id=item.MaLoaiSP})"><input type="button" value="Xóa" class="btn btn-success" /> </a>
+            </td>
+        </tr>
+    }
+</table>
+<br /><br /><br /><br />
+@*<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có muốn xóa bản ghi này không?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Xóa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#myRow a').click(function (e) {
+            e.preventDefault();
+
+            var id = $(this).attr("Id");
+
+            var MSG = confirm("Are you sure you want to delete this Record?");
+
+            if (MSG) {
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteComments")',
+                    data: { id: id },
+                    dataType: "json",
+                    success: function () {
+                        setTimeout(function () { location.reload(); }, 1000);
+                    },
+                    error: function () {
+                        alert("Error while deleting data");
+                    }
+                });
+            }
+        })
+    });
+</script>*@

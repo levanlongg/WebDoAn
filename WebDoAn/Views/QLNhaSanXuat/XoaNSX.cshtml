@@ -1,0 +1,52 @@
+﻿@model WebDoAn.Models.NhaSanXuat
+
+@{
+    ViewBag.Title = "XoaNSX";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+
+<h2>XoaNSX</h2>
+
+<h2 style="text-align:center;color:red"><b>Xóa nhà sản xuất</b></h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            <table>
+                <tr>
+                    <th style="width:10% !important">Mã NSX:</th>
+                    <td>@Html.DisplayFor(model => model.MaNSX)</td>
+                </tr>
+                <tr>
+                    <th>Tên NSX:</th>
+                    <td>@Html.DisplayFor(model => model.TenNSX)</td>
+                </tr>
+                <tr>
+                    <th>Địa chỉ:</th>
+                    <td>@Html.DisplayFor(model => model.DiaChi)</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <th>Số điện thoại:</th>
+                    <td>@Html.DisplayFor(model => model.SoDienThoai)</td>
+                </tr>
+                <tr>
+                    <th>Số fax:</th>
+                    <td>@Html.DisplayFor(model => model.SoFax)</td>
+                </tr>
+            </table>
+            <div class="form-group">
+                <p>
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Delete" class="btn btn-success" />
+                    </div>
+                </p>
+            </div>
+        </div>
+    }
+</div>

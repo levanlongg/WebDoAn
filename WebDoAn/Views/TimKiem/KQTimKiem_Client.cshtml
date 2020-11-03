@@ -1,0 +1,36 @@
+﻿@using WebDoAn.Models;
+@model IEnumerable<WebDoAn.Models.SanPham>
+@{
+    ViewBag.Title = "KQTimKiem_Client";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+<section class="portfolio py-5" id="gallery" style="margin-top:-15%">
+    <div class="container py-xl-5 py-lg-3">
+        <div class="row pt-4">
+            @foreach (var item in Model.OrderBy(n => n.DonGia))
+            {
+                <div class="col-md-3 gal-grid-wthree" style="padding: 10px 10px;">
+                    <div class="gallery-demo">
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 300px;width: 100%;" />
+                                <div class="product-hover">
+                                    <a href="@Url.Action("ThemGioHang","GioHang",new {@MaSP=item.MaSP, @strUrl= Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                    <a href="@Url.Action("Xemchitiet","SanPham",new {id=item.MaSP})" class="view-details-link"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                </div>
+                            </div>
+                            <h2 style="font-size:20px;text-align:center;color:green"><a href="single-product.html">@item.TenSP</a></h2>
+                            <div class="product-carousel-price">
+                                <h2 style="text-align:center;font-size:20px;color:red">@string.Format("{0:0,0 VNĐ}", item.DonGia) </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </section>
+<br/><br />
+
+
+

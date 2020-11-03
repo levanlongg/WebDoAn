@@ -1,0 +1,60 @@
+﻿@using WebDoAn.Models;
+@model IEnumerable<WebDoAn.Models.LoaiSanPham>
+@{
+    ViewBag.Title = "QuanLyLoaiSanPham";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+<h1 style="margin-top:3%">Quản lý thông tin sản phẩm</h1>
+<p>
+    @Html.ActionLink("Thêm mới", "ThemMoi", "QLLoaiSanPham", new { @class = "btn btn-success" })
+</p>
+@using (Html.BeginForm("KQTimKiem_LSP_Admin", "TimKiem"))
+{
+    <p>
+        <input type="text" name="tkTenlsp" placeholder="Nhập từ khóa" style="width:300px; outline:none !important" />
+        <input type="submit" value="Tìm kiếm" style="outline:none !important;margin-left:-8%" />
+    </p>
+}
+<table>
+    <tr>
+        <th>
+            Mã LSP
+        </th>
+        <th>
+            Tên loại sản phẩm
+        </th>
+        <th>
+            Icon
+        </th>
+        <th>
+            Bí danh
+        </th>
+        <th>
+            Tác vụ
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.MaLoaiSP)</td>
+            <td> @Html.DisplayFor(modelItem => item.TenLoai)</td>
+            <td> @Html.DisplayFor(modelItem => item.Icon) </td>
+            <td> @Html.DisplayFor(modelItem => item.BiDanh)</td>
+            <td>
+                <a href="@Url.Action("XemSP","QuanLySanPham",new {id=item.MaLoaiSP})"><input type="button" value="Xem" class="btn btn-success" /> </a>
+                <a href="@Url.Action("SuaSP","QuanLySanPham",new {id=item.MaLoaiSP})"><input type="button" value="Sửa" class="btn btn-success" /> </a>
+                <a href="@Url.Action("XoaSP","QuanLySanPham",new {id=item.MaLoaiSP})"><input type="button" value="Xóa" class="btn btn-success" /> </a>
+            </td>
+        </tr>
+    }
+</table>
+<br /><br />
+
+
+
+
+
+
+
+

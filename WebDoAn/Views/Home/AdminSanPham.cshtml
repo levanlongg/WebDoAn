@@ -1,0 +1,78 @@
+﻿@using WebDoAn.Models;
+@model IEnumerable<SanPham>
+
+@{
+    ViewBag.Title = "AdminSanPham";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>AdminSanPham</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+   
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTaCT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DacDiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HinhAnh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongTon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotXem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotBinhChon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Luot_BinhLuan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLanMua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaLoaiSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaXoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaCungCap.TenNCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaSanXuat.TenNSX)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaSP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaSP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>

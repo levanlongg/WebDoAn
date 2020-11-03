@@ -1,0 +1,44 @@
+﻿@model WebDoAn.Models.KhachHang
+
+@{
+    ViewBag.Title = "XemKH";
+    Layout = "~/Views/Layout/AdminLayoutNVBH.cshtml";
+}
+
+<h2 style="text-align:center;color:red"><b>Xem chi tiết khách hàng</b></h2>
+
+<div>
+    <hr />
+    <table>
+        <tr>
+            <th style="width:10% !important">Mã KH:</th>
+            <td>@Html.DisplayFor(model => model.MaKH)</td>
+        </tr>
+        <tr>
+            <th>Tên KH:</th>
+            <td>@Html.DisplayFor(model => model.TenKH)</td>
+        </tr>
+        <tr>
+            <th>Địa chỉ:</th>
+            <td>@Html.DisplayFor(model => model.DiaChi)</td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td>@Html.DisplayFor(model => model.Email)</td>
+        </tr>
+        <tr>
+            <th>Số điện thoại:</th>
+            <td>@Html.DisplayFor(model => model.SoDienThoai)</td>
+        </tr>
+        <tr>
+            <th>Thành viên:</th>
+            <td>@Html.DisplayFor(model => model.ThanhVien.MaThanhVien)</td>
+        </tr>
+    </table>
+    <br />
+    <div>
+        <p>
+            <a href="@Url.Action("DSKhachHang","QLKhachHang")"><input type="button" value="Quay trở lại" class="btn btn-success" /></a>
+        </p>
+    </div>
+</div>

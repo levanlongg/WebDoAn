@@ -1,0 +1,44 @@
+﻿@model WebDoAn.Models.LoaiSanPham
+
+@{
+    ViewBag.Title = "XoaLSP";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+
+<h2 style="text-align:center;color:red"><b>Xóa loại sản phẩm</b></h2>
+
+<h3>Are you sure you want to delete this?</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        <table>
+            <tr>
+                <th style="width:10% !important">Mã LSP</th>
+                <td>@Html.DisplayFor(model => model.MaLoaiSP)</td>
+            </tr>
+            <tr>
+                <th>Tên loại sản phẩm:</th>
+                <td>@Html.DisplayFor(model => model.TenLoai)</td>
+            </tr>
+            <tr>
+                <th>Icon:</th>
+                <td>@Html.DisplayFor(model => model.Icon)</td>
+            </tr>
+            <tr>
+                <th>Bí danh:</th>
+                <td>@Html.DisplayFor(model => model.BiDanh)</td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <p>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-success" />
+                </div>
+            </p>
+        </div>
+    </div>
+}
+<br /><br /><br /><br />
+<br /><br />

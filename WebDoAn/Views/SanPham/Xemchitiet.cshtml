@@ -1,0 +1,59 @@
+﻿@using WebDoAn.Models;
+@model SanPham
+@{
+    ViewBag.Title = "Xemchitiet";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<!-- End site branding area -->
+
+<div class="single-product-area" style="margin-top:-10%;">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h3 style="color:green">Mô tả ngắn</h3>
+                    <div class="thubmnail-recent">
+                        <p style="text-align:justify; color:black">@Model.MoTa</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/" + Model.HinhAnh)" alt="" style="height: 300px;width: 90%;border:1px double black">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="product-inner">
+                                <h4 style="color:green">Tên sản phẩm:</h4>
+                                <h2 class="product-name"> @Model.TenSP</h2>
+                                <div class="product-inner-price">
+                                    <h4 style="color:green">Giá bán:</h4>
+                                    <p style="color:red"> @Model.DonGia.Value.ToString("#,##") VNĐ</p>
+                                </div>
+
+                                <form action="" class="cart">
+                                    <a href="@Url.Action("ThemGioHang","GioHang",new {@MaSP=Model.MaSP, @strUrl= Request.Url.ToString() })" class="add_to_cart_button" type="submit">Thêm vào giỏ</a>
+                                </form>
+                              
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <h3 style="color:green">Mô tả chi tiết</h3>
+            <p style="text-align:justify;color:black">@Model.MoTaCT</p>
+            <h3 style="color:green">Đặc điểm</h3>
+            <p style="text-align:justify;color:black">@Model.DacDiem</p>
+        </div>
+    </div>
+</div>

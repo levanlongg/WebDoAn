@@ -1,0 +1,97 @@
+﻿@model WebDoAn.Models.SanPham
+
+@{
+    ViewBag.Title = "XoaSP";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+
+<h2 style="text-align:center;color:red"><b>Xóa sản phẩm</b></h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    @using (Html.BeginForm("XoaSP", "QuanLySanPham", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <table>
+                <tr>
+                    <th style="width:15% !important"> Hình ảnh: </th>
+                    <td><img src="@Url.Content("~/Content/HinhAnhSP/" + Model.HinhAnh)" style="height: 70px;width: 70px;" /></td>
+                </tr>
+                <tr>
+                    <th>Mã sản phẩm </th>
+                    <td>@Model.MaSP</td>
+                </tr>
+                <tr>
+                    <th>Tên sản phẩm: </th>
+                    <td>@Model.TenSP</td>
+                </tr>
+                <tr>
+                    <th>Đơn giá: </th>
+                    <td>@Model.DonGia.Value.ToString("#,##") VNĐ</td>
+                </tr>
+                <tr>
+                    <th>Mô tả: </th>
+                    <td>@Model.MoTa</td>
+                </tr>
+                <tr>
+                    <th>Mô tả chi tiết: </th>
+                    <td>@Model.MoTaCT</td>
+                </tr>
+                <tr>
+                    <th>Đặc điểm: </th>
+                    <td>@Model.DacDiem</td>
+                </tr>
+                <tr>
+                    <th>Số lượng tồn: </th>
+                    <td>@Model.SoLuongTon</td>
+                </tr>
+                <tr>
+                    <th>Lượt xem: </th>
+                    <td>@Model.LuotXem</td>
+                </tr>
+                <tr>
+                    <th>Lượt bình chọn: </th>
+                    <td>@Model.LuotBinhChon</td>
+                </tr>
+                <tr>
+                    <th>Lượt bình luận: </th>
+                    <td>@Model.Luot_BinhLuan</td>
+                </tr>
+                <tr>
+                    <th>Số lần mua: </th>
+                    <td>@Model.SoLanMua</td>
+                </tr>
+                <tr>
+                    <th>Mới: </th>
+                    <td>@Model.Moi</td>
+                </tr>
+                <tr>
+                    <th>Mã nhà cung cấp: </th>
+                    <td>@Model.MaNCC</td>
+                </tr>
+                <tr>
+                    <th>Mã nhà sản xuất: </th>
+                    <td>@Model.MaNSX</td>
+                </tr>
+                <tr>
+                    <th>Mã loại sản phẩm: </th>
+                    <td>@Model.MaLoaiSP</td>
+                </tr>
+                <tr>
+                    <th>Đã xóa: </th>
+                    <td>@Model.DaXoa</td>
+                </tr>
+            </table>
+
+            <div class="form-group">
+                <p>
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Delete" class="btn btn-success" />
+                    </div>
+                </p>
+            </div>
+        </div>
+    }
+</div>

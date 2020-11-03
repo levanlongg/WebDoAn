@@ -1,0 +1,47 @@
+﻿@model WebDoAn.Models.ChiTietDonDatHang
+
+@{
+    ViewBag.Title = "XemCTDH";
+    Layout = "~/Views/Layout/AdminLayoutNVBH.cshtml";
+}
+
+
+<div>
+    <h2 style="text-align:center;color:red"><b>Xem chi tiết khách hàng</b></h2>
+
+    <div>
+        <hr />
+        <table>
+            <tr>
+                <th style="width:10% !important">Mã CTDDH:</th>
+                <td>@Html.DisplayFor(model => model.MaChiTietDDH)</td>
+            </tr>
+            <tr>
+                <th>Mã DDH:</th>
+                <td>@Html.DisplayFor(model => model.MaDDH)</td>
+            </tr>
+            <tr>
+                <th>Mã sản phẩm:</th>
+                <td>@Html.DisplayFor(model => model.MaSP)</td>
+            </tr>
+            <tr>
+                <th> Tên sản phẩm:</th>
+                <td>@Html.DisplayFor(model => model.TenSP)</td>
+            </tr>
+            <tr>
+                <th>Số lượng:</th>
+                <td>@Html.DisplayFor(model => model.SoLuong)</td>
+            </tr>
+            <tr>
+                <th>Đơn giá:</th>
+                <td>@Html.DisplayFor(model => model.DonGia)</td>
+            </tr>
+        </table>
+        <br />
+        <div>
+            <p>
+                <a href="@Url.Action("DSCTDonHang","QLChiTietDonHang")"><input type="button" value="Quay trở lại" class="btn btn-success" /></a>
+            </p>
+        </div>
+    </div>
+</div>

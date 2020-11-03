@@ -1,0 +1,34 @@
+﻿@model WebDoAn.Models.LoaiSanPham
+
+@{
+    ViewBag.Title = "XemLSP";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+
+<h2 style="text-align:center;color:red"><b>Xem loại sản phẩm</b></h2>
+<hr />
+<table>
+    <tr>
+        <th style="width:10% !important">Mã LSP:</th>
+        <td>@Html.DisplayFor(model=>model.MaLoaiSP)</td>
+    </tr>
+    <tr>
+        <th>Tên loại sản phẩm:</th>
+        <td>@Html.DisplayFor(model => model.TenLoai)</td>
+    </tr>
+    <tr>
+        <th>Icon:</th>
+        <td>@Html.DisplayFor(model => model.Icon)</td>
+    </tr>
+    <tr>
+        <th>Bí danh:</th>
+        <td>@Html.DisplayFor(model => model.BiDanh)</td>
+    </tr>
+</table>
+<br />
+<div>
+    <p>
+        <a href="@Url.Action("SuaLSP","QLLoaiSanPham",new {id=Model.MaLoaiSP})"><input type="button" value="Chỉnh sửa" class="btn btn-success" /></a>
+    </p>
+</div>
+<br /><br /><br /><br />

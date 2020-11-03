@@ -1,0 +1,43 @@
+﻿@model WebDoAn.Models.NhaCungCap
+
+@{
+    ViewBag.Title = "XemNCC";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+
+<h2 style="text-align:center;color:red"><b>Xem chi tiết nhà cung cấp</b></h2>
+<hr />
+<table>
+    <tr>
+        <th style="width:10% !important">Mã NCC:</th>
+        <td>@Html.DisplayFor(model => model.MaNCC)</td>
+    </tr>
+    <tr>
+        <th>Tên NCC:</th>
+        <td>@Html.DisplayFor(model => model.TenNCC)</td>
+    </tr>
+    <tr>
+        <th>Địa chỉ:</th>
+        <td>@Html.DisplayFor(model => model.DiaChi)</td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>@Html.DisplayFor(model => model.Email)</td>
+    </tr>
+    <tr>
+        <th>Số điện thoại:</th>
+        <td>@Html.DisplayFor(model => model.MaNCC)</td>
+    </tr>
+    <tr>
+        <th>Số fax:</th>
+        <td>@Html.DisplayFor(model => model.MaNCC)</td>
+    </tr>
+</table>
+<br />
+<div>
+    <p>
+        <a href="@Url.Action("SuaNCC","QLNhaCungCap",new {id=Model.MaNCC})"><input type="button" value="Chỉnh sửa" class="btn btn-success" /></a>
+    </p>
+</div>
+
+<br/><br/>

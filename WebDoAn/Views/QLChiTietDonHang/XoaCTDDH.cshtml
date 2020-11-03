@@ -1,0 +1,50 @@
+﻿@model WebDoAn.Models.ChiTietDonDatHang
+
+@{
+    ViewBag.Title = "XoaCTDDH";
+    Layout = "~/Views/Layout/AdminLayoutNVBH.cshtml";
+}
+
+<h2 style="text-align:center;color:red"><b>Xóa chi tiết khách hàng</b></h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            <table>
+                <tr>
+                    <th style="width:10% !important">Mã chi tiết DDH:</th>
+                    <td>@Html.DisplayFor(model => model.MaChiTietDDH)</td>
+                </tr>
+                <tr>
+                    <th style="width:10% !important">Mã DDH:</th>
+                    <td>@Html.DisplayFor(model => model.MaDDH)</td>
+                </tr>
+                <tr>
+                    <th>Mã sản phẩm:</th>
+                    <td>@Html.DisplayFor(model => model.MaSP)</td>
+                </tr>
+                <tr>
+                    <th>Tên sản phẩm:</th>
+                    <td>@Html.DisplayFor(model => model.TenSP)</td>
+                </tr>
+                <tr>
+                    <th>Số lượng:</th>
+                    <td>@Html.DisplayFor(model => model.SoLuong)</td>
+                </tr>
+                <tr>
+                    <th>Đơn giá:</th>
+                    <td>@Html.DisplayFor(model => model.DonGia)</td>
+                </tr>
+                
+            </table>
+            <br />
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>

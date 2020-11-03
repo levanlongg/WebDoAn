@@ -1,0 +1,13 @@
+﻿@using WebDoAn.Models;
+@model List<ItemGioHang>
+<script>
+    alert('Sản phẩm đã bán không đặt được nữa');
+</script>
+@{
+    ViewBag.Title = "DSSPham";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+    <hr />
+    <h2 style="text-align:center;color:red"><b>Thông báo</b></h2><br />
+    <h3 style="text-align:center;color:darkgreen">Sản phẩm quý khách vừa chọn đã được đặt trước. Quý khách vui lòng<br /> quay trở lại trang danh sách sản phẩm hoặc tìm kiếm sản phẩm.</h3>
+    <hr />

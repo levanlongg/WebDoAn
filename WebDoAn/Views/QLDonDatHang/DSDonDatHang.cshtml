@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebDoAn.Models.DonDatHang>
+
+@{
+    ViewBag.Title = "DSDonDatHang";
+    Layout = "~/Views/Layout/AdminLayoutNVBH.cshtml";
+}
+
+<h2>Đơn đặt hàng</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table>
+    <tr>
+        <th>
+            Ngày đặt
+        </th>
+        <th>
+            TT Giao hàng
+        </th>
+        <th>
+            Ngày giao
+        </th>
+        <th>
+            Đã thanh toán
+        </th>
+        <th>
+            Ưu đãi
+        </th>
+        <th>
+            Tên KH
+        </th>
+        <th>Tác vụ</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UuDai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
+        </td>
+        <td>
+            <a href="@Url.Action("XemDDH","QLDonDatHang",new {id=item.MaDDH})"><input type="button" value="Xem" class="btn btn-success" /> </a>
+            @*<a href="@Url.Action("SuaKH","QLKhachHang",new {id=item.MaKH})"><input type="button" value="Sửa" class="btn btn-success" /> </a>*@
+            <a href="@Url.Action("XoaDDH","QLDonDatHang",new {id=item.MaDDH})"><input type="button" value="Xóa" class="btn btn-success" /> </a>
+        </td>
+    </tr>
+}
+
+</table>

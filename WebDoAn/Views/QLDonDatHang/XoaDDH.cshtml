@@ -1,0 +1,55 @@
+﻿@model WebDoAn.Models.DonDatHang
+
+@{
+    ViewBag.Title = "XoaDDH";
+    Layout = "~/Views/Layout/AdminLayoutNVBH.cshtml";
+}
+
+<h2 style="text-align:center;color:red"><b>Xóa đơn đặt hàng</b></h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            <table>
+                <tr>
+                    <th style="width:10% !important">Mã DDH:</th>
+                    <td>@Html.DisplayFor(model => model.MaDDH)</td>
+                </tr>
+                <tr>
+                    <th>Ngày đặt:</th>
+                    <td>@Html.DisplayFor(model => model.NgayDat)</td>
+                </tr>
+                <tr>
+                    <th>Tình trạng giao hàng:</th>
+                    <td>@Html.DisplayFor(model => model.TinhTrangGiaoHang)</td>
+                </tr>
+                <tr>
+                    <th>Ngày giao:</th>
+                    <td>@Html.DisplayFor(model => model.NgayGiao)</td>
+                </tr>
+                <tr>
+                    <th>Đã thanh toán:</th>
+                    <td>@Html.DisplayFor(model => model.DaThanhToan)</td>
+                </tr>
+                <tr>
+                    <th>Mã KH:</th>
+                    <td>@Html.DisplayFor(model => model.KhachHang.TenKH)</td>
+                </tr>
+                <tr>
+                    <th>Ưu đãi:</th>
+                    <td>@Html.DisplayFor(model => model.UuDai)</td>
+                </tr>
+            </table>
+            <br />
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>
+<br/>

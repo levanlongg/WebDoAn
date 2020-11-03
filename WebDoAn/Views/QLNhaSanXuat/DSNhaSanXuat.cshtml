@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebDoAn.Models.NhaSanXuat>
+
+@{
+    ViewBag.Title = "DSNhaSanXuat";
+    Layout = "~/Views/Layout/AdminLayoutNVQLK.cshtml";
+}
+
+<h1 style="margin-top:3%">Quản lý nhà sản xuất</h1>
+
+<p>
+    @Html.ActionLink("Thêm mới", "ThemMoi", "QLNhaSanXuat", new { @class = "btn btn-success" })
+
+</p>
+@using (Html.BeginForm("KQTimKiem_NSX_Admin", "TimKiem"))
+{
+    <p>
+        <input type="text" name="tkTennsx" placeholder="Nhập từ khóa" style="width:300px; outline:none !important" />
+        <input type="submit" value="Tìm kiếm" style="outline:none !important;margin-left:-8%" />
+    </p>
+}
+<table>
+    <tr>
+        <th>
+            Tên nhà sản xuất
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Số diện thoại
+        </th>
+        <th>
+            Số Fax
+        </th>
+        <th>Tác vụ</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenNSX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoFax)
+        </td>
+        <td>
+            <a href="@Url.Action("XemNSX","QLNhaSanXuat",new {id=item.MaNSX})"><input type="button" value="Xem" class="btn btn-success" /> </a>
+            <a href="@Url.Action("SuaNSX","QLNhaSanXuat",new {id=item.MaNSX})"><input type="button" value="Sửa" class="btn btn-success" /> </a>
+            <a href="@Url.Action("XoaNSX","QLNhaSanXuat",new {id=item.MaNSX})"><input type="button" value="Xóa" class="btn btn-success" /> </a>
+        </td>
+    </tr>
+}
+
+</table>
+<br/><br/>

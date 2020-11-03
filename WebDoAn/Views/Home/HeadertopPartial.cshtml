@@ -1,0 +1,23 @@
+﻿@using WebDoAn.Models;
+@model IEnumerable<SanPham>
+
+<div class="container">
+    <br /><br /><br /><br />
+    <div class="row" style="margin-top:3%!important">
+        <div class="col-sm-3">
+            <a href="@Url.Action("DangKy","Home")" class="btn btn-success" style="border-radius:25px 25px 25px 25px;margin-left:10%" role="button" id="1">Đăng ký</a>
+            <a href="@Url.Action("Login","Login1")" class="btn btn-success" style="border-radius:25px 25px 25px 25px" role="button" id="1">Đăng nhập</a>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            @using (Html.BeginForm("KQTimKiem_Client", "TimKiem"))
+            {
+                <input type="text" name="searchString" placeholder="Nhập từ khóa" style="max-width:80%;min-width:80%; border-radius:25px 25px 25px 25px;margin-left:-4%;outline:none !important" />
+                <input type="submit" value="search" style="margin-left:-20.5%;border-radius:0px 25px 25px 0px; outline:none !important" />
+            }
+        </div>
+        <div class="col-sm-3">
+            @Html.Action("GioHangPartial", "GioHang")
+        </div>
+    </div>
+</div>

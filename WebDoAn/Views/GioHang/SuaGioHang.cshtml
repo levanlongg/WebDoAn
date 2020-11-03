@@ -1,0 +1,60 @@
+﻿@using WebDoAn.Models;
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/GioHangLayout.cshtml";
+}
+@{
+    if (Session["GioHang"] == null)
+    {
+        Session["GioHang"] = new List<ItemGioHang>();
+    }
+    List<ItemGioHang> ds = Session["GioHang"] as List<ItemGioHang>;
+    if (ds.Count <= 0)
+    {
+        <h1 style="text-align:center;margin-top:3%;font-size:200%;color:white">Không có sản phẩm nào trong giỏ hàng </h1>
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình ảnh</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                    <th>Tác vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in ds)
+                    {
+                        using (Html.BeginForm("SuaGioHang", "GioHang"))
+                        {
+                        <tr>
+                            <td>@item.TenSP</td>
+                            <td><img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" width="50" height="50" /></td>
+                            <td>@item.SoLuong</td>
+                            <td>@string.Format("{0:0,0 VNĐ}", item.DonGia)</td>
+                            <td>@string.Format("{0:0,0 VNĐ}", item.ThanhTien)</td>
+                            <td>
+                                <a href="@Url.Action("XóaGioHang", "GioHang", new { @MaSP = item.MaSP, @strUrl = Request.Url.ToString() })"><input type="submit" value="Xóa"/></a>
+                            </td>
+                        </tr>
+                            }
+                        }
+                    }
+            </tbody>
+
+        </table>
+                    }
+}
+
+
+
+
+
+
+
+
